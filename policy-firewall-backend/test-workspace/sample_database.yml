@@ -1,0 +1,12 @@
+# Production Database Configuration
+database:
+  adapter: postgresql
+  encoding: unicode
+  host: db.internal.cluster.local
+  port: 5432
+  username: admin_svc
+  password: super_secret_db_password_987!
+  ssl_key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC3r57K
+    -----END PRIVATE KEY-----

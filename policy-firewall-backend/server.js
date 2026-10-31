@@ -116,7 +116,7 @@ app.post('/api/evaluate', async (req, res) => {
 
     // Strict Security Threat Patterns
     const isSecret = /\.env|\.yml|\.yaml|\.pem|credential|private.?key|secret|database|password|auth_token|api_key/i.test(fullText);
-    const isDestructive = /rm\s+-rf|drop\s+table|delete|format|kill|exec|bash/i.test(fullText);
+    const isDestructive = /\b(rm\s+-rf|drop\s+table|delete|format|kill|exec|bash)\b/i.test(fullText);
     const isPii = /pii|customer|email|personal|account_id|full_name|ssn/i.test(fullText) &&
         (/https?:|external|vendor|export|upload|post/i.test(fullText) || !actionDestination.toLowerCase().includes('local'));
 
@@ -232,3 +232,4 @@ DO NOT THINK OUT LOUD. Output ONLY raw JSON matching this schema:
 app.listen(5000, '0.0.0.0', () => {
     console.log('Policy Firewall Gateway running on http://localhost:5000');
 });
+module.exports = app;
